@@ -30,7 +30,7 @@ export class CustomerDialogBoxComponent {
   }
   onSubmit() {
 
-    let aipUrl = "https://localhost:7243/api/Customer";
+    let aipUrl = "https://tuong111-dnbke0a2f5hkd0f3.eastasia-01.azurewebsites.net/api/Customer";
 
     let httpOptions = {
       headers: new HttpHeaders({

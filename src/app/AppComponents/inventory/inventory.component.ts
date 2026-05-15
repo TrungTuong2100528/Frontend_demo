@@ -33,7 +33,7 @@ export class InventoryComponent {
 
 
   getInventoryDetails() {
-    let aipUrl = "https://localhost:7243/api/Inventory";
+    let aipUrl = "https://tuong111-dnbke0a2f5hkd0f3.eastasia-01.azurewebsites.net/api/Inventory";
 
     this.httpClient.get(aipUrl).subscribe(data => { //Angular gửi HTTP GET; subscribe() để: Nhận dữ liệu async
       this.inventoryDetails = data; //Gán dữ liệu cho biến
@@ -55,7 +55,7 @@ export class InventoryComponent {
 
   oSubmit(): void { //Chạy khi bấm nút Submit
 
-    let aipUrl = "https://localhost:7243/api/Inventory";
+    let aipUrl = "https://tuong111-dnbke0a2f5hkd0f3.eastasia-01.azurewebsites.net/api/Inventory";
     let httpOptions = { //Cấu hình HTTP Header
       headers: new HttpHeaders({
         Authorization: "my-auth-token", //Token (demo)
@@ -96,7 +96,7 @@ export class InventoryComponent {
     })
   }
   deleteInventory(): void {
-    let aipUrl = "https://localhost:7243/api/Inventory?productId=" + this.productIDToDelete;
+    let aipUrl = "https://tuong111-dnbke0a2f5hkd0f3.eastasia-01.azurewebsites.net/api/Inventory?productId=" + this.productIDToDelete;
 
     this.httpClient.delete(aipUrl).subscribe(data => {
       this.getInventoryDetails();
@@ -126,7 +126,7 @@ export class InventoryComponent {
       this.getInventoryDetails();
       return;
     }else{
-      let aipUrl = "https://localhost:7243/api/Inventory/search?productName=" + this.SearchProductName;
+      let aipUrl = "https://tuong111-dnbke0a2f5hkd0f3.eastasia-01.azurewebsites.net/api/Inventory/search?productName=" + this.SearchProductName;
       this.httpClient.get(aipUrl).subscribe(data => {
         this.inventoryDetails = data;
         console.log(this.inventoryDetails)
