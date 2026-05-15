@@ -1,0 +1,101 @@
+<div class="container mt-4">
+
+  <!-- Title -->
+  <h1 class="fw-bold mb-4">Inventory</h1>
+
+  <!-- Form -->
+  <form class="row gx-3 gy-2 align-items-center mb-4" (ngSubmit)="oSubmit()" novalidate>
+
+    <div class="col-md-3">
+      <label class="form-label">Product Id</label>
+      <input type="text" class="form-control" [disabled]="disavledProductIdInput" placeholder="1001"
+        [(ngModel)]="inventoryData.productID" name="productID">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Product Name</label>
+      <select class="form-select" [(ngModel)]="inventoryData.productName" name="productName">
+        <option value="">Choose...</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Test">Test</option>
+        <option value="Accessory">Accessory</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Quantity Available</label>
+      <input type="number" class="form-control" placeholder="0" [(ngModel)]="inventoryData.availableQty"
+        name="availableQTy">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Reorder Point</label>
+      <input type="number" class="form-control" placeholder="0" [(ngModel)]="inventoryData.reOderPoint"
+        name="reoderPoint">
+    </div>
+
+    <!-- Submit button -->
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-primary px-4">Submit</button>
+    </div>
+  </form>
+
+  <!-- Inventory Details -->
+  <h5 class="fw-bold mb-3">Inventory Details</h5>
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Enter product name..." 
+    aria-label="Search"
+     [(ngModel)]="enterSearchData"
+      name="productName"  
+    >
+    <button class="btn btn-outline-success" type="submit" (click)="SearchInventory(enterSearchData)">Search</button>
+  </form> <br>
+  <table class="table table-bordered table-striped align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Stock Available</th>
+        <th>Reorder Point</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let inventory of inventoryDetails">
+        <td>{{inventory.productID}}</td>
+        <td>{{inventory.productName}}</td>
+        <td>{{inventory.availableQty}}</td>
+        <td>{{inventory.reOderPoint}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2" (click)="popularFormForEdit(inventory)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="openConfirmDialog(inventory.productID)">Delete</button>
+        </td>
+      </tr>
+
+      <!-- <tr>
+        <td>2</td>
+        <td>1002</td>
+        <td>Phone</td>
+        <td>200</td>
+        <td>60</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2">Edit</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>1003</td>
+        <td>Accessory</td>
+        <td>600</td>
+        <td>50</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2">Edit</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
